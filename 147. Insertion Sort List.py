@@ -11,30 +11,22 @@ class Solution(object):
         :rtype: ListNode
         """
         ret = None
-        last = None
         while head is not None:
-        	min_pos = head
-        	min_pos_left = None
-        	min_val = head.val
-        	pos1 = head
-        	pos2 = head.next
-        	while pos2 is not None:
-        		if pos2.val < min_val:
-        			min_val = pos2.val 
-        			min_pos = pos2
-        			min_pos_left = pos1
-        		pos1 = pos2
-        		pos2 = pos2.next
-        	if min_pos_left is not None:
-        		min_pos_left.next = min_pos.next
-        	else:
-        		head = min_pos.next
-
+        	tar = head.val
+        	tmp_head = head
+        	head = head.next
         	if ret is None:
-        		ret = min_pos
-        		last = min_pos
+        		ret = tmp_head
+        		ret.next = None
         	else:
-        		last.next = min_pos
-        		last = min_pos
-
+        		pos = ret
+        		last = None 
+        		while pos is not None and tar > pos.val:
+        			last = pos
+        			pos = pos.next
+        		if last is None:
+        			ret = tmp_head
+        		else:
+        			last.next = tmp_head
+        		tmp_head.next = pos
         return ret
