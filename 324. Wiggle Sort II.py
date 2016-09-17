@@ -36,13 +36,25 @@ class Solution(object):
 		if len(nums) == 0:
 			return []
 		mid = self.findKthLargest(nums, len(nums)/2+1)
-		# print nums
-		# print mid
-		pos = 0
-		for i in range(len(nums)):
-			if nums[i] <= mid and pos < len(nums) and not (i < pos and i%2==0):
-				nums[pos], nums[i] = nums[i], nums[pos]
-				pos += 2
-		# print nums
+		ret = [mid for i in range(len(nums))]
 
-Solution().wiggleSort([2,1])
+		if len(nums) % 2 == 0:
+			pos = len(nums) - 2
+		else:
+			pos = len(nums) - 1
+		for i in range(len(nums)):
+			if nums[i] < mid:
+				ret[pos] = nums[i]
+				pos -= 2
+
+		pos = 1
+		for i in range(len(nums)):
+			if nums[i] > mid:
+				ret[pos] = nums[i]
+				pos += 2
+		
+		for i in range(len(nums)):
+			nums[i] = ret[i]
+		print nums
+
+Solution().wiggleSort([1,2,2,2,3,4, 3])
