@@ -55,6 +55,6 @@ class Solution(object):
 		
 		for i in range(len(nums)):
 			nums[i] = ret[i]
-		print nums
+		# print nums
 
 Solution().wiggleSort([1,2,2,2,3,4, 3])
