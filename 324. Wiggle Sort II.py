@@ -40,9 +40,18 @@ class Solution(object):
 		# print mid
 		pos = 0
 		for i in range(len(nums)):
-			if nums[i] <= mid and pos < len(nums) and not (i < pos and i%2==0):
+			if nums[i] < mid and pos < len(nums) and not (i < pos and i%2==0):
 				nums[pos], nums[i] = nums[i], nums[pos]
 				pos += 2
-		# print nums
+		for i in range(len(nums)):
+			if nums[i] == mid and pos < len(nums) and not (i < pos and i%2==0):
+				nums[pos], nums[i] = nums[i], nums[pos]
+				pos += 2
+		pos = 1
+		for i in range(1, len(nums), 2):
+			if nums[i] == mid and pos < len(nums):
+				nums[i], nums[pos] = nums[pos], nums[i]
+				pos += 2		
+		print nums
 
-Solution().wiggleSort([2,1])
+Solution().wiggleSort([1, 2, 3, 4, 1, 1])
