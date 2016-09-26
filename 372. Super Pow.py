@@ -18,7 +18,7 @@ class Solution(object):
         	mod_res.append(tem)
 
         rec_len = len(vis)
-        print mod_res
+        # print mod_res
         return mod_res[(b-1)%rec_len]
 
 print Solution().superPow(2 ,[2,0])
