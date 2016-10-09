@@ -25,3 +25,5 @@ class Solution(object):
 					posr -= 1
 		print ans
 		return ans
+
+print 'a
